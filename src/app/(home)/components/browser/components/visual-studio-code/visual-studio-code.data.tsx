@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+export const CODE = `import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/ui/header";
@@ -21,7 +21,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-br">
-      <body className={`overflow-x-hidden ${poppins.className}`}>
+      <body className={" overflow-x-hidden $ {poppins.className}"}>
         <Header />
         {children}
         <Footer />
@@ -29,3 +29,5 @@ export default function RootLayout({
     </html>
   );
 }
+
+`;
