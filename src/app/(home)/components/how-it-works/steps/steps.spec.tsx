@@ -5,7 +5,7 @@ import { Steps } from ".";
 
 describe("<Steps/>", () => {
   it("should be able to render the component", () => {
-    render(<Steps />);
+    render(<Steps currentStep={[0]} onChangeStep={() => {}} />);
 
     const items = screen.getAllByRole("listitem");
 

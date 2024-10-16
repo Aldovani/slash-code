@@ -4,6 +4,4 @@ export { Projects } from "./projects";
 export { Card } from "./card";
 export { Features } from "./features";
 export { ActiveLearningSection } from "./active-learning-section";
-export { CallToAction } from "./call-to-action";
 export { HowItWorks } from "./how-it-works";
-export { Faq } from "./faq";

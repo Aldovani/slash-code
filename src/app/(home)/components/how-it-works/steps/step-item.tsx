@@ -5,6 +5,7 @@ type StepItemProps = {
   title: string;
   description: string;
   isActive?: boolean;
+  onClickChangeStep: () => void;
 };
 
 export function StepItem({
@@ -12,9 +13,11 @@ export function StepItem({
   isActive = false,
   description,
   title,
+  onClickChangeStep
 }: StepItemProps) {
   return (
     <li
+      onClick={onClickChangeStep}
       data-is-active={isActive}
       className="group data-[is-active=true]:bg-violet-50 cursor-pointer hover:bg-violet-50 transition-colors flex flex-col px-6 py-8 border data-[is-active=true]:border-transparent hover:border-transparent border-slate-200 rounded-xl"
     >
@@ -24,7 +27,7 @@ export function StepItem({
       <h3 className="font-medium sm:text-xl text-lg mt-4 group-data-[is-active=true]:text-violet-900 text-slate-800">
         {title}
       </h3>
-      <p className="group-data-[is-active=true]:text-violet-500 text-slate-400 mt-2 sm:text-base text-xs ">
+      <p className="group-data-[is-active=true]:text-violet-600 text-slate-400 mt-2 sm:text-base text-xs font-medium ">
         {description}
       </p>
     </li>

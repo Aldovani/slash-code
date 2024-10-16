@@ -6,7 +6,7 @@ import { StepItem } from "./step-item";
 
 describe("<StepItem/>", () => {
   it("should be able to render the component", () => {
-    render(<StepItem description="Description" icon={BugIcon} title="Title" />);
+    render(<StepItem onClickChangeStep={() => {}} description="Description" icon={BugIcon} title="Title" />);
 
     const title = screen.getByRole("heading");
     const description = screen.getByRole("paragraph");
@@ -21,6 +21,7 @@ describe("<StepItem/>", () => {
         description="Description"
         icon={BugIcon}
         title="Title"
+        onClickChangeStep={() => {}}
         isActive
       />
     );
