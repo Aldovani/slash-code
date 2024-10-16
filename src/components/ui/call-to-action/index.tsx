@@ -8,10 +8,11 @@ export function CallToAction() {
           Comece agora mesmo um desafio!!
         </h2>
         <p className="mt-6 text-slate-200 max-w-[800px] text-center">
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Porro earum
-          tempore ducimus, perspiciatis eius at exercitationem assumenda
-          provident? Architecto a nobis voluptate atque odit optio vero cum
-          magnam voluptatibus ea.
+          Não espere mais para elevar suas habilidades de programação! Escolha
+          um desafio, mergulhe de cabeça e comece a aprimorar suas competências
+          agora. Seja qual for seu nível, temos desafios prontos para
+          impulsionar sua carreira. Está pronto para enfrentar seu próximo
+          desafio?
         </p>
         <Link href="/challenges" variants="button" className="mt-10">
           Comece agora
