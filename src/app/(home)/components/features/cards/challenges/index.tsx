@@ -1,25 +1,9 @@
 import Marquee from "@/components/magicui/marquee";
 import { Card } from "../../../card";
-import Fintech from "@/assets/Fintech.png";
-import houseHunter from "@/assets/house-hunter.png";
-import ibico from "@/assets/ibico.png";
+
 import { ChallengeItem } from "./challenge-item";
 import { RenderList } from "@/components/render-list";
-
-const CHALLENGES = [
-  {
-    name: "fintech",
-    url: Fintech,
-  },
-  {
-    name: "fintech",
-    url: ibico,
-  },
-  {
-    name: "fintech",
-    url: houseHunter,
-  },
-];
+import { CHALLENGES } from "./challenges.data";
 
 export function Challenges() {
   return (
@@ -27,9 +11,10 @@ export function Challenges() {
       <Card.Header>
         <Card.Title>Desafios variados</Card.Title>
         <Card.Description className="mt-2">
-          Yorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
-          vulputate libero et velit interdum, ac aliquet odio mattis. Class
-          aptent taciti sociosqu{" "}
+          Explore uma ampla gama de desafios práticos em diversas áreas da
+          programação. Desde sistemas complexos até soluções criativas, escolha
+          o desafio que combina com você e eleve suas habilidades para o próximo
+          nível.
         </Card.Description>
       </Card.Header>
 
@@ -37,8 +22,8 @@ export function Challenges() {
         <Marquee pauseOnHover reverse className="[--duration:15s] [--gap:24px]">
           <RenderList
             data={CHALLENGES}
-            renderItem={({ name, url }) => (
-              <ChallengeItem name={name} imgUrl={url} key={name} />
+            renderItem={(challenge) => (
+              <ChallengeItem {...challenge} key={challenge.name} />
             )}
           />
         </Marquee>

@@ -6,11 +6,11 @@ export function Ranking() {
   return (
     <Card.Root className="col-start-1 col-end-10   lg:col-start-5 lg:col-end-[14] overflow-hidden  ">
       <Card.Header>
-        <Card.Title>Ranking e pontuação</Card.Title>
-        <Card.Description className="mt-2 max-w-[530px]">
-          Yorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
-          vulputate libero et velit interdum, ac aliquet odio mattis. Class
-          aptent taciti sociosqu{" "}
+        <Card.Title>Ranking e pontuação <span className="text-slate-400 text-sm">(Em breve)</span></Card.Title>
+        <Card.Description className="mt-2 max-w-[830px]">
+          Supere seus limites e veja seu nome no topo da tabela! Complete
+          desafios, acumule pontos e compare seu desempenho com outros
+          desenvolvedores. Quanto mais você avança, maior será sua conquista.
         </Card.Description>
       </Card.Header>
       <Card.Content className=" overflow-hidden relative flex justify-center items-center pt-10">

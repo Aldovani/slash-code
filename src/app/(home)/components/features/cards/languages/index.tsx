@@ -45,9 +45,9 @@ export function Languages() {
       <Card.Header>
         <Card.Title>Escolha sua linguagem ou framework favorito</Card.Title>
         <Card.Description className="mt-2 max-w-[52 4px]">
-          Yorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
-          vulputate libero et velit interdum, ac aliquet odio mattis. Class
-          aptent taciti sociosqu{" "}
+          Desenvolva seus projetos na tecnologia que você mais gosta! Seja
+          React, Node, Python ou qualquer outra, temos desafios para cada stack,
+          permitindo que você pratique e aprenda na linguagem que preferir.
         </Card.Description>
       </Card.Header>
     </Card.Root>

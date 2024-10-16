@@ -23,9 +23,10 @@ export function ActiveLearningSection() {
             <h2 className="text-3.5xl leading-[120%] font-medium text-slate-900">
               Fuja de tutorias
             </h2>
-            <p className="mt-2 text-slate-400 text-sm leading-[140%] max-w-[430px] text-left">
-              Yorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
-              vulputate libero et velit interdum, ac aliquet
+            <p className="mt-2 text-slate-400 text-base leading-[140%] max-w-[480px] text-left">
+              Aprenda de verdade, resolvendo desafios reais de programação.
+              Chega de seguir passo a passo, é hora de aplicar seus
+              conhecimentos e desenvolver suas habilidades na prática.
             </p>
             <Link
               size="normal"
