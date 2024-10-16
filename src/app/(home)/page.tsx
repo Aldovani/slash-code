@@ -3,10 +3,12 @@ import {
   Features,
   Hero,
   Projects,
-  CallToAction,
   HowItWorks,
-  Faq,
 } from "./components";
+
+import {CallToAction} from '@/components/ui/call-to-action'
+import {Faq} from '@/components/ui/faq'
+
 
 export default function HomePage() {
   return (
