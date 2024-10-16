@@ -10,6 +10,7 @@ const link = tv({
         "hover:bg-violet-200 transition-colors block w-fit leading-none rounded-lg font-medium  bg-violet-50 ",
       outline:
         "bg-white border border-slate-200 py-3 px-6 rounded-md font-medium hover:bg-violet-600 hover:text-slate-50 hover:border-violet-600 transition-colors",
+      ghost: "bg-transparent hover:bg-violet-100  transition-colors  rounded-xl",
     },
     size: {
       sm: "text-sm px-4 py-2",
