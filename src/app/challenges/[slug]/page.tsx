@@ -29,7 +29,7 @@ export default async function ChallengesDetailsPage({
     <main>
       <Banner
         backgroundColor={challenge.bgColor.hex}
-        screens={challenge.screens.map((image) => image.url)}
+        preview={challenge.preview.url}
         title={challenge.title}
       />
 
@@ -40,6 +40,16 @@ export default async function ChallengesDetailsPage({
           area={challenge.area}
           figmaUrl={challenge.figmaUrl}
           description={challenge.description}
+          author={{
+            name: challenge.author,
+            role: challenge.role,
+            avatar: challenge.avatar?.url,
+            social: {
+              linkedin: challenge.linkedin,
+              portfolio: challenge.portfolio,
+              twitter: challenge.twitter,
+            },
+          }}
         />
 
         <Body

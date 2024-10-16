@@ -4,12 +4,24 @@ import { RewriteArea } from "@/utils/rewrite-area";
 import { Linkedin, Smile, Twitter } from "lucide-react";
 import Image from "next/image";
 
+type Author = {
+  name: string;
+  role: string;
+  avatar: string | null | undefined;
+  social: {
+    portfolio: string | null | undefined;
+    linkedin: string | null | undefined;
+    twitter: string | null | undefined;
+  };
+};
+
 type ChallengeHeaderProps = {
   area: Area;
   difficult: string;
   description: string;
   title: string;
   figmaUrl: string | null | undefined;
+  author: Author;
 };
 
 export function ChallengeHeader({
@@ -18,6 +30,7 @@ export function ChallengeHeader({
   description,
   figmaUrl,
   title,
+  author,
 }: ChallengeHeaderProps) {
   return (
     <header className="mt-6 flex justify-between items-center">
@@ -51,32 +64,39 @@ export function ChallengeHeader({
         <div className="flex  items-start mt-2 gap-3">
           <Image
             alt="Aldovani"
-            src="https://avatars.githubusercontent.com/u/56704952?v=4"
+            src={author.avatar || ""}
             width={64}
             height={64}
             className="rounded-full"
           />
+
           <div>
             <h3 className="font-semibold text-slate-600">Aldovani</h3>
             <span className=" text-slate-400">Desenvolvedor</span>
 
             <nav className="mt-2">
               <ul className="flex gap-3">
-                <li className="text-slate-400 hover:text-violet-600">
-                  <a href="https://aldovani.github.io/portfolio">
-                    <Smile />
-                  </a>
-                </li>
-                <li className="text-slate-400 hover:text-violet-600">
-                  <a href="https://aldovani.github.io/portfolio">
-                    <Linkedin />
-                  </a>
-                </li>
-                <li className="text-slate-400 hover:text-violet-600">
-                  <a href="https://aldovani.github.io/portfolio">
-                    <Twitter />
-                  </a>
-                </li>
+                {author.social.portfolio && (
+                  <li className="text-slate-400 hover:text-violet-600">
+                    <a href={author.social.portfolio} target="_blank">
+                      <Smile />
+                    </a>
+                  </li>
+                )}
+                {author.social.linkedin && (
+                  <li className="text-slate-400 hover:text-violet-600">
+                    <a href={author.social.linkedin} target="_blank">
+                      <Linkedin />
+                    </a>
+                  </li>
+                )}
+                {author.social.twitter && (
+                  <li className="text-slate-400 hover:text-violet-600">
+                    <a href={author.social.twitter} target="_blank">
+                      <Twitter />
+                    </a>
+                  </li>
+                )}
               </ul>
             </nav>
           </div>
