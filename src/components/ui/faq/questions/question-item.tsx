@@ -5,21 +5,22 @@ import {
 } from "@/components/ui/accordion";
 
 type QuestionItem = {
-  title: string;
+  question: string;
   answer: string;
   index: number;
 };
 
-export function QuestionItem({ answer, index, title }: QuestionItem) {
+export function QuestionItem({ answer, index, question }: QuestionItem) {
   return (
     <AccordionItem
       value={`item-${index}`}
+      data-testid="question"
       className="border rounded-xl py-2 px-6 border-slate-200"
     >
-      <AccordionTrigger  className="font-medium text-slate-600">
-        {title}
+      <AccordionTrigger className="font-medium text-slate-600">
+        {question}
       </AccordionTrigger>
-      <AccordionContent className="border-none text-slate-400">
+      <AccordionContent className="border-none text-slate-500">
         {answer}
       </AccordionContent>
     </AccordionItem>

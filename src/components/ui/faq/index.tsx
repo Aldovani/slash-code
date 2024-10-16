@@ -9,9 +9,9 @@ export function Faq() {
           Perguntas frequentes sobre nós
         </h2>
         <p className="mt-2 text-slate-400 text-sm leading-[140%] max-w-[430px] text-left">
-          Yorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
-          vulputate libero et velit interdum, ac aliquet odio mattis. Class
-          aptent taciti sociosqu
+          Tem dúvidas sobre nossa plataforma? Aqui estão as perguntas mais
+          frequentes dos nossos usuários. Confira as respostas e veja como
+          podemos ajudar você a aprimorar suas habilidades de programação!
         </p>
       </header>
 
