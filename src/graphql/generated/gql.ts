@@ -14,7 +14,7 @@ import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/
  */
 const documents = {
     "\n  query getAllChallenges {\n    challenges {\n      id\n      slug\n      title\n      area\n      description\n      difficult\n      preview {\n        url\n      }\n    }\n  }\n": types.GetAllChallengesDocument,
-    "\n query getChallenge($slug: String) {\n  challenges(where: {slug: $slug}) {\n    id\n    slug\n    difficult\n    description\n    area\n    title\n    figmaUrl\n    bgColor {\n      hex\n    }\n    screens {\n      url\n    }\n    ideaBody {\n      html\n    }\n    descriptionBody {\n      html\n    }\n    requisitesBody {\n      html\n    }\n  }\n}\n": types.GetChallengeDocument,
+    "\n  query getChallenge($slug: String) {\n    challenges(where: { slug: $slug }) {\n      id\n      slug\n      difficult\n      description\n      area\n      figmaUrl\n      author\n      linkedin\n      portfolio\n      role\n      title\n      twitter\n      avatar {\n        url\n      }\n      bgColor {\n        hex\n      }\n      ideaBody {\n        html\n      }\n      preview {\n        url\n      }\n      descriptionBody {\n        html\n      }\n      requisitesBody {\n        html\n      }\n    }\n  }\n": types.GetChallengeDocument,
 };
 
 /**
@@ -38,7 +38,7 @@ export function graphql(source: "\n  query getAllChallenges {\n    challenges {\
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(source: "\n query getChallenge($slug: String) {\n  challenges(where: {slug: $slug}) {\n    id\n    slug\n    difficult\n    description\n    area\n    title\n    figmaUrl\n    bgColor {\n      hex\n    }\n    screens {\n      url\n    }\n    ideaBody {\n      html\n    }\n    descriptionBody {\n      html\n    }\n    requisitesBody {\n      html\n    }\n  }\n}\n"): (typeof documents)["\n query getChallenge($slug: String) {\n  challenges(where: {slug: $slug}) {\n    id\n    slug\n    difficult\n    description\n    area\n    title\n    figmaUrl\n    bgColor {\n      hex\n    }\n    screens {\n      url\n    }\n    ideaBody {\n      html\n    }\n    descriptionBody {\n      html\n    }\n    requisitesBody {\n      html\n    }\n  }\n}\n"];
+export function graphql(source: "\n  query getChallenge($slug: String) {\n    challenges(where: { slug: $slug }) {\n      id\n      slug\n      difficult\n      description\n      area\n      figmaUrl\n      author\n      linkedin\n      portfolio\n      role\n      title\n      twitter\n      avatar {\n        url\n      }\n      bgColor {\n        hex\n      }\n      ideaBody {\n        html\n      }\n      preview {\n        url\n      }\n      descriptionBody {\n        html\n      }\n      requisitesBody {\n        html\n      }\n    }\n  }\n"): (typeof documents)["\n  query getChallenge($slug: String) {\n    challenges(where: { slug: $slug }) {\n      id\n      slug\n      difficult\n      description\n      area\n      figmaUrl\n      author\n      linkedin\n      portfolio\n      role\n      title\n      twitter\n      avatar {\n        url\n      }\n      bgColor {\n        hex\n      }\n      ideaBody {\n        html\n      }\n      preview {\n        url\n      }\n      descriptionBody {\n        html\n      }\n      requisitesBody {\n        html\n      }\n    }\n  }\n"];
 
 export function graphql(source: string) {
   return (documents as any)[source] ?? {};

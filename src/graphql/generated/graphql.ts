@@ -43,6 +43,7 @@ export enum Area {
 /** Asset system model */
 export type Asset = Entity & Node & {
   __typename?: 'Asset';
+  avatarChallenge: Array<Challenge>;
   bannerUrlChallenge: Array<Challenge>;
   /** The time the document was created */
   createdAt: Scalars['DateTime']['output'];
@@ -71,7 +72,6 @@ export type Asset = Entity & Node & {
   /** User that last published this document */
   publishedBy?: Maybe<User>;
   scheduledIn: Array<ScheduledOperation>;
-  screensChallenge: Array<Challenge>;
   /** The file size */
   size?: Maybe<Scalars['Float']['output']>;
   /** System stage field */
@@ -86,6 +86,20 @@ export type Asset = Entity & Node & {
   url: Scalars['String']['output'];
   /** The file width */
   width?: Maybe<Scalars['Float']['output']>;
+};
+
+
+/** Asset system model */
+export type AssetAvatarChallengeArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  forceParentLocale?: InputMaybe<Scalars['Boolean']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  locales?: InputMaybe<Array<Locale>>;
+  orderBy?: InputMaybe<ChallengeOrderByInput>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  where?: InputMaybe<ChallengeWhereInput>;
 };
 
 
@@ -166,20 +180,6 @@ export type AssetScheduledInArgs = {
 
 
 /** Asset system model */
-export type AssetScreensChallengeArgs = {
-  after?: InputMaybe<Scalars['String']['input']>;
-  before?: InputMaybe<Scalars['String']['input']>;
-  first?: InputMaybe<Scalars['Int']['input']>;
-  forceParentLocale?: InputMaybe<Scalars['Boolean']['input']>;
-  last?: InputMaybe<Scalars['Int']['input']>;
-  locales?: InputMaybe<Array<Locale>>;
-  orderBy?: InputMaybe<ChallengeOrderByInput>;
-  skip?: InputMaybe<Scalars['Int']['input']>;
-  where?: InputMaybe<ChallengeWhereInput>;
-};
-
-
-/** Asset system model */
 export type AssetUpdatedAtArgs = {
   variation?: SystemDateTimeFieldVariation;
 };
@@ -215,12 +215,12 @@ export type AssetConnection = {
 };
 
 export type AssetCreateInput = {
+  avatarChallenge?: InputMaybe<ChallengeCreateManyInlineInput>;
   bannerUrlChallenge?: InputMaybe<ChallengeCreateManyInlineInput>;
   createdAt?: InputMaybe<Scalars['DateTime']['input']>;
   fileName?: InputMaybe<Scalars['String']['input']>;
   /** Inline mutations for managing document localizations excluding the default locale */
   localizations?: InputMaybe<AssetCreateLocalizationsInput>;
-  screensChallenge?: InputMaybe<ChallengeCreateManyInlineInput>;
   updatedAt?: InputMaybe<Scalars['DateTime']['input']>;
   /** Optionally the system can upload a file for you, for that you need to provide a publicly accessible url */
   uploadUrl?: InputMaybe<Scalars['String']['input']>;
@@ -278,6 +278,9 @@ export type AssetManyWhereInput = {
   OR?: InputMaybe<Array<AssetWhereInput>>;
   /** Contains search across all appropriate fields. */
   _search?: InputMaybe<Scalars['String']['input']>;
+  avatarChallenge_every?: InputMaybe<ChallengeWhereInput>;
+  avatarChallenge_none?: InputMaybe<ChallengeWhereInput>;
+  avatarChallenge_some?: InputMaybe<ChallengeWhereInput>;
   bannerUrlChallenge_every?: InputMaybe<ChallengeWhereInput>;
   bannerUrlChallenge_none?: InputMaybe<ChallengeWhereInput>;
   bannerUrlChallenge_some?: InputMaybe<ChallengeWhereInput>;
@@ -338,9 +341,6 @@ export type AssetManyWhereInput = {
   scheduledIn_every?: InputMaybe<ScheduledOperationWhereInput>;
   scheduledIn_none?: InputMaybe<ScheduledOperationWhereInput>;
   scheduledIn_some?: InputMaybe<ScheduledOperationWhereInput>;
-  screensChallenge_every?: InputMaybe<ChallengeWhereInput>;
-  screensChallenge_none?: InputMaybe<ChallengeWhereInput>;
-  screensChallenge_some?: InputMaybe<ChallengeWhereInput>;
   updatedAt?: InputMaybe<Scalars['DateTime']['input']>;
   /** All values greater than the given value. */
   updatedAt_gt?: InputMaybe<Scalars['DateTime']['input']>;
@@ -403,13 +403,13 @@ export type AssetTransformationInput = {
 };
 
 export type AssetUpdateInput = {
+  avatarChallenge?: InputMaybe<ChallengeUpdateManyInlineInput>;
   bannerUrlChallenge?: InputMaybe<ChallengeUpdateManyInlineInput>;
   fileName?: InputMaybe<Scalars['String']['input']>;
   /** Manage document localizations */
   localizations?: InputMaybe<AssetUpdateLocalizationsInput>;
   /** Use this to define if its a reupload for the asset */
   reUpload?: InputMaybe<Scalars['Boolean']['input']>;
-  screensChallenge?: InputMaybe<ChallengeUpdateManyInlineInput>;
   /** Optionally the system can upload a file for you, for that you need to provide a publicly accessible url */
   uploadUrl?: InputMaybe<Scalars['String']['input']>;
 };
@@ -637,6 +637,9 @@ export type AssetWhereInput = {
   OR?: InputMaybe<Array<AssetWhereInput>>;
   /** Contains search across all appropriate fields. */
   _search?: InputMaybe<Scalars['String']['input']>;
+  avatarChallenge_every?: InputMaybe<ChallengeWhereInput>;
+  avatarChallenge_none?: InputMaybe<ChallengeWhereInput>;
+  avatarChallenge_some?: InputMaybe<ChallengeWhereInput>;
   bannerUrlChallenge_every?: InputMaybe<ChallengeWhereInput>;
   bannerUrlChallenge_none?: InputMaybe<ChallengeWhereInput>;
   bannerUrlChallenge_some?: InputMaybe<ChallengeWhereInput>;
@@ -769,9 +772,6 @@ export type AssetWhereInput = {
   scheduledIn_every?: InputMaybe<ScheduledOperationWhereInput>;
   scheduledIn_none?: InputMaybe<ScheduledOperationWhereInput>;
   scheduledIn_some?: InputMaybe<ScheduledOperationWhereInput>;
-  screensChallenge_every?: InputMaybe<ChallengeWhereInput>;
-  screensChallenge_none?: InputMaybe<ChallengeWhereInput>;
-  screensChallenge_some?: InputMaybe<ChallengeWhereInput>;
   size?: InputMaybe<Scalars['Float']['input']>;
   /** All values greater than the given value. */
   size_gt?: InputMaybe<Scalars['Float']['input']>;
@@ -849,6 +849,8 @@ export type BatchPayload = {
 export type Challenge = Entity & Node & {
   __typename?: 'Challenge';
   area: Area;
+  author: Scalars['String']['output'];
+  avatar?: Maybe<Asset>;
   bgColor: Color;
   /** The time the document was created */
   createdAt: Scalars['DateTime']['output'];
@@ -865,22 +867,32 @@ export type Challenge = Entity & Node & {
   /** The unique identifier */
   id: Scalars['ID']['output'];
   ideaBody: RichText;
+  linkedin?: Maybe<Scalars['String']['output']>;
+  portfolio?: Maybe<Scalars['String']['output']>;
   preview: Asset;
   /** The time the document was published. Null on documents in draft stage. */
   publishedAt?: Maybe<Scalars['DateTime']['output']>;
   /** User that last published this document */
   publishedBy?: Maybe<User>;
   requisitesBody: RichText;
+  role: Scalars['String']['output'];
   scheduledIn: Array<ScheduledOperation>;
-  screens: Array<Asset>;
   slug: Scalars['String']['output'];
   /** System stage field */
   stage: Stage;
   title: Scalars['String']['output'];
+  twitter?: Maybe<Scalars['String']['output']>;
   /** The time the document was updated */
   updatedAt: Scalars['DateTime']['output'];
   /** User that last updated this document */
   updatedBy?: Maybe<User>;
+};
+
+
+export type ChallengeAvatarArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']['input']>;
+  locales?: InputMaybe<Array<Locale>>;
+  where?: InputMaybe<AssetSingleRelationWhereInput>;
 };
 
 
@@ -929,19 +941,6 @@ export type ChallengeScheduledInArgs = {
 };
 
 
-export type ChallengeScreensArgs = {
-  after?: InputMaybe<Scalars['String']['input']>;
-  before?: InputMaybe<Scalars['String']['input']>;
-  first?: InputMaybe<Scalars['Int']['input']>;
-  forceParentLocale?: InputMaybe<Scalars['Boolean']['input']>;
-  last?: InputMaybe<Scalars['Int']['input']>;
-  locales?: InputMaybe<Array<Locale>>;
-  orderBy?: InputMaybe<AssetOrderByInput>;
-  skip?: InputMaybe<Scalars['Int']['input']>;
-  where?: InputMaybe<AssetWhereInput>;
-};
-
-
 export type ChallengeUpdatedByArgs = {
   forceParentLocale?: InputMaybe<Scalars['Boolean']['input']>;
   locales?: InputMaybe<Array<Locale>>;
@@ -966,6 +965,8 @@ export type ChallengeConnection = {
 
 export type ChallengeCreateInput = {
   area: Area;
+  author: Scalars['String']['input'];
+  avatar?: InputMaybe<AssetCreateOneInlineInput>;
   bgColor: ColorInput;
   createdAt?: InputMaybe<Scalars['DateTime']['input']>;
   description: Scalars['String']['input'];
@@ -973,11 +974,14 @@ export type ChallengeCreateInput = {
   difficult: Difficult;
   figmaUrl?: InputMaybe<Scalars['String']['input']>;
   ideaBody: Scalars['RichTextAST']['input'];
+  linkedin?: InputMaybe<Scalars['String']['input']>;
+  portfolio?: InputMaybe<Scalars['String']['input']>;
   preview: AssetCreateOneInlineInput;
   requisitesBody: Scalars['RichTextAST']['input'];
-  screens: AssetCreateManyInlineInput;
+  role: Scalars['String']['input'];
   slug: Scalars['String']['input'];
   title: Scalars['String']['input'];
+  twitter?: InputMaybe<Scalars['String']['input']>;
   updatedAt?: InputMaybe<Scalars['DateTime']['input']>;
 };
 
@@ -1021,6 +1025,26 @@ export type ChallengeManyWhereInput = {
   area_not?: InputMaybe<Area>;
   /** All values that are not contained in given list. */
   area_not_in?: InputMaybe<Array<InputMaybe<Area>>>;
+  author?: InputMaybe<Scalars['String']['input']>;
+  /** All values containing the given string. */
+  author_contains?: InputMaybe<Scalars['String']['input']>;
+  /** All values ending with the given string. */
+  author_ends_with?: InputMaybe<Scalars['String']['input']>;
+  /** All values that are contained in given list. */
+  author_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  author_not?: InputMaybe<Scalars['String']['input']>;
+  /** All values not containing the given string. */
+  author_not_contains?: InputMaybe<Scalars['String']['input']>;
+  /** All values not ending with the given string */
+  author_not_ends_with?: InputMaybe<Scalars['String']['input']>;
+  /** All values that are not contained in given list. */
+  author_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** All values not starting with the given string. */
+  author_not_starts_with?: InputMaybe<Scalars['String']['input']>;
+  /** All values starting with the given string. */
+  author_starts_with?: InputMaybe<Scalars['String']['input']>;
+  avatar?: InputMaybe<AssetWhereInput>;
   createdAt?: InputMaybe<Scalars['DateTime']['input']>;
   /** All values greater than the given value. */
   createdAt_gt?: InputMaybe<Scalars['DateTime']['input']>;
@@ -1104,6 +1128,44 @@ export type ChallengeManyWhereInput = {
   id_not_starts_with?: InputMaybe<Scalars['ID']['input']>;
   /** All values starting with the given string. */
   id_starts_with?: InputMaybe<Scalars['ID']['input']>;
+  linkedin?: InputMaybe<Scalars['String']['input']>;
+  /** All values containing the given string. */
+  linkedin_contains?: InputMaybe<Scalars['String']['input']>;
+  /** All values ending with the given string. */
+  linkedin_ends_with?: InputMaybe<Scalars['String']['input']>;
+  /** All values that are contained in given list. */
+  linkedin_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  linkedin_not?: InputMaybe<Scalars['String']['input']>;
+  /** All values not containing the given string. */
+  linkedin_not_contains?: InputMaybe<Scalars['String']['input']>;
+  /** All values not ending with the given string */
+  linkedin_not_ends_with?: InputMaybe<Scalars['String']['input']>;
+  /** All values that are not contained in given list. */
+  linkedin_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** All values not starting with the given string. */
+  linkedin_not_starts_with?: InputMaybe<Scalars['String']['input']>;
+  /** All values starting with the given string. */
+  linkedin_starts_with?: InputMaybe<Scalars['String']['input']>;
+  portfolio?: InputMaybe<Scalars['String']['input']>;
+  /** All values containing the given string. */
+  portfolio_contains?: InputMaybe<Scalars['String']['input']>;
+  /** All values ending with the given string. */
+  portfolio_ends_with?: InputMaybe<Scalars['String']['input']>;
+  /** All values that are contained in given list. */
+  portfolio_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  portfolio_not?: InputMaybe<Scalars['String']['input']>;
+  /** All values not containing the given string. */
+  portfolio_not_contains?: InputMaybe<Scalars['String']['input']>;
+  /** All values not ending with the given string */
+  portfolio_not_ends_with?: InputMaybe<Scalars['String']['input']>;
+  /** All values that are not contained in given list. */
+  portfolio_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** All values not starting with the given string. */
+  portfolio_not_starts_with?: InputMaybe<Scalars['String']['input']>;
+  /** All values starting with the given string. */
+  portfolio_starts_with?: InputMaybe<Scalars['String']['input']>;
   preview?: InputMaybe<AssetWhereInput>;
   publishedAt?: InputMaybe<Scalars['DateTime']['input']>;
   /** All values greater than the given value. */
@@ -1121,12 +1183,28 @@ export type ChallengeManyWhereInput = {
   /** All values that are not contained in given list. */
   publishedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']['input']>>>;
   publishedBy?: InputMaybe<UserWhereInput>;
+  role?: InputMaybe<Scalars['String']['input']>;
+  /** All values containing the given string. */
+  role_contains?: InputMaybe<Scalars['String']['input']>;
+  /** All values ending with the given string. */
+  role_ends_with?: InputMaybe<Scalars['String']['input']>;
+  /** All values that are contained in given list. */
+  role_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  role_not?: InputMaybe<Scalars['String']['input']>;
+  /** All values not containing the given string. */
+  role_not_contains?: InputMaybe<Scalars['String']['input']>;
+  /** All values not ending with the given string */
+  role_not_ends_with?: InputMaybe<Scalars['String']['input']>;
+  /** All values that are not contained in given list. */
+  role_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** All values not starting with the given string. */
+  role_not_starts_with?: InputMaybe<Scalars['String']['input']>;
+  /** All values starting with the given string. */
+  role_starts_with?: InputMaybe<Scalars['String']['input']>;
   scheduledIn_every?: InputMaybe<ScheduledOperationWhereInput>;
   scheduledIn_none?: InputMaybe<ScheduledOperationWhereInput>;
   scheduledIn_some?: InputMaybe<ScheduledOperationWhereInput>;
-  screens_every?: InputMaybe<AssetWhereInput>;
-  screens_none?: InputMaybe<AssetWhereInput>;
-  screens_some?: InputMaybe<AssetWhereInput>;
   slug?: InputMaybe<Scalars['String']['input']>;
   /** All values containing the given string. */
   slug_contains?: InputMaybe<Scalars['String']['input']>;
@@ -1165,6 +1243,25 @@ export type ChallengeManyWhereInput = {
   title_not_starts_with?: InputMaybe<Scalars['String']['input']>;
   /** All values starting with the given string. */
   title_starts_with?: InputMaybe<Scalars['String']['input']>;
+  twitter?: InputMaybe<Scalars['String']['input']>;
+  /** All values containing the given string. */
+  twitter_contains?: InputMaybe<Scalars['String']['input']>;
+  /** All values ending with the given string. */
+  twitter_ends_with?: InputMaybe<Scalars['String']['input']>;
+  /** All values that are contained in given list. */
+  twitter_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  twitter_not?: InputMaybe<Scalars['String']['input']>;
+  /** All values not containing the given string. */
+  twitter_not_contains?: InputMaybe<Scalars['String']['input']>;
+  /** All values not ending with the given string */
+  twitter_not_ends_with?: InputMaybe<Scalars['String']['input']>;
+  /** All values that are not contained in given list. */
+  twitter_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** All values not starting with the given string. */
+  twitter_not_starts_with?: InputMaybe<Scalars['String']['input']>;
+  /** All values starting with the given string. */
+  twitter_starts_with?: InputMaybe<Scalars['String']['input']>;
   updatedAt?: InputMaybe<Scalars['DateTime']['input']>;
   /** All values greater than the given value. */
   updatedAt_gt?: InputMaybe<Scalars['DateTime']['input']>;
@@ -1186,6 +1283,8 @@ export type ChallengeManyWhereInput = {
 export enum ChallengeOrderByInput {
   AreaAsc = 'area_ASC',
   AreaDesc = 'area_DESC',
+  AuthorAsc = 'author_ASC',
+  AuthorDesc = 'author_DESC',
   CreatedAtAsc = 'createdAt_ASC',
   CreatedAtDesc = 'createdAt_DESC',
   DescriptionAsc = 'description_ASC',
@@ -1196,29 +1295,42 @@ export enum ChallengeOrderByInput {
   FigmaUrlDesc = 'figmaUrl_DESC',
   IdAsc = 'id_ASC',
   IdDesc = 'id_DESC',
+  LinkedinAsc = 'linkedin_ASC',
+  LinkedinDesc = 'linkedin_DESC',
+  PortfolioAsc = 'portfolio_ASC',
+  PortfolioDesc = 'portfolio_DESC',
   PublishedAtAsc = 'publishedAt_ASC',
   PublishedAtDesc = 'publishedAt_DESC',
+  RoleAsc = 'role_ASC',
+  RoleDesc = 'role_DESC',
   SlugAsc = 'slug_ASC',
   SlugDesc = 'slug_DESC',
   TitleAsc = 'title_ASC',
   TitleDesc = 'title_DESC',
+  TwitterAsc = 'twitter_ASC',
+  TwitterDesc = 'twitter_DESC',
   UpdatedAtAsc = 'updatedAt_ASC',
   UpdatedAtDesc = 'updatedAt_DESC'
 }
 
 export type ChallengeUpdateInput = {
   area?: InputMaybe<Area>;
+  author?: InputMaybe<Scalars['String']['input']>;
+  avatar?: InputMaybe<AssetUpdateOneInlineInput>;
   bgColor?: InputMaybe<ColorInput>;
   description?: InputMaybe<Scalars['String']['input']>;
   descriptionBody?: InputMaybe<Scalars['RichTextAST']['input']>;
   difficult?: InputMaybe<Difficult>;
   figmaUrl?: InputMaybe<Scalars['String']['input']>;
   ideaBody?: InputMaybe<Scalars['RichTextAST']['input']>;
+  linkedin?: InputMaybe<Scalars['String']['input']>;
+  portfolio?: InputMaybe<Scalars['String']['input']>;
   preview?: InputMaybe<AssetUpdateOneInlineInput>;
   requisitesBody?: InputMaybe<Scalars['RichTextAST']['input']>;
-  screens?: InputMaybe<AssetUpdateManyInlineInput>;
+  role?: InputMaybe<Scalars['String']['input']>;
   slug?: InputMaybe<Scalars['String']['input']>;
   title?: InputMaybe<Scalars['String']['input']>;
+  twitter?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type ChallengeUpdateManyInlineInput = {
@@ -1240,14 +1352,19 @@ export type ChallengeUpdateManyInlineInput = {
 
 export type ChallengeUpdateManyInput = {
   area?: InputMaybe<Area>;
+  author?: InputMaybe<Scalars['String']['input']>;
   bgColor?: InputMaybe<ColorInput>;
   description?: InputMaybe<Scalars['String']['input']>;
   descriptionBody?: InputMaybe<Scalars['RichTextAST']['input']>;
   difficult?: InputMaybe<Difficult>;
   figmaUrl?: InputMaybe<Scalars['String']['input']>;
   ideaBody?: InputMaybe<Scalars['RichTextAST']['input']>;
+  linkedin?: InputMaybe<Scalars['String']['input']>;
+  portfolio?: InputMaybe<Scalars['String']['input']>;
   requisitesBody?: InputMaybe<Scalars['RichTextAST']['input']>;
+  role?: InputMaybe<Scalars['String']['input']>;
   title?: InputMaybe<Scalars['String']['input']>;
+  twitter?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type ChallengeUpdateManyWithNestedWhereInput = {
@@ -1316,6 +1433,26 @@ export type ChallengeWhereInput = {
   area_not?: InputMaybe<Area>;
   /** All values that are not contained in given list. */
   area_not_in?: InputMaybe<Array<InputMaybe<Area>>>;
+  author?: InputMaybe<Scalars['String']['input']>;
+  /** All values containing the given string. */
+  author_contains?: InputMaybe<Scalars['String']['input']>;
+  /** All values ending with the given string. */
+  author_ends_with?: InputMaybe<Scalars['String']['input']>;
+  /** All values that are contained in given list. */
+  author_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  author_not?: InputMaybe<Scalars['String']['input']>;
+  /** All values not containing the given string. */
+  author_not_contains?: InputMaybe<Scalars['String']['input']>;
+  /** All values not ending with the given string */
+  author_not_ends_with?: InputMaybe<Scalars['String']['input']>;
+  /** All values that are not contained in given list. */
+  author_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** All values not starting with the given string. */
+  author_not_starts_with?: InputMaybe<Scalars['String']['input']>;
+  /** All values starting with the given string. */
+  author_starts_with?: InputMaybe<Scalars['String']['input']>;
+  avatar?: InputMaybe<AssetWhereInput>;
   createdAt?: InputMaybe<Scalars['DateTime']['input']>;
   /** All values greater than the given value. */
   createdAt_gt?: InputMaybe<Scalars['DateTime']['input']>;
@@ -1399,6 +1536,44 @@ export type ChallengeWhereInput = {
   id_not_starts_with?: InputMaybe<Scalars['ID']['input']>;
   /** All values starting with the given string. */
   id_starts_with?: InputMaybe<Scalars['ID']['input']>;
+  linkedin?: InputMaybe<Scalars['String']['input']>;
+  /** All values containing the given string. */
+  linkedin_contains?: InputMaybe<Scalars['String']['input']>;
+  /** All values ending with the given string. */
+  linkedin_ends_with?: InputMaybe<Scalars['String']['input']>;
+  /** All values that are contained in given list. */
+  linkedin_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  linkedin_not?: InputMaybe<Scalars['String']['input']>;
+  /** All values not containing the given string. */
+  linkedin_not_contains?: InputMaybe<Scalars['String']['input']>;
+  /** All values not ending with the given string */
+  linkedin_not_ends_with?: InputMaybe<Scalars['String']['input']>;
+  /** All values that are not contained in given list. */
+  linkedin_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** All values not starting with the given string. */
+  linkedin_not_starts_with?: InputMaybe<Scalars['String']['input']>;
+  /** All values starting with the given string. */
+  linkedin_starts_with?: InputMaybe<Scalars['String']['input']>;
+  portfolio?: InputMaybe<Scalars['String']['input']>;
+  /** All values containing the given string. */
+  portfolio_contains?: InputMaybe<Scalars['String']['input']>;
+  /** All values ending with the given string. */
+  portfolio_ends_with?: InputMaybe<Scalars['String']['input']>;
+  /** All values that are contained in given list. */
+  portfolio_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  portfolio_not?: InputMaybe<Scalars['String']['input']>;
+  /** All values not containing the given string. */
+  portfolio_not_contains?: InputMaybe<Scalars['String']['input']>;
+  /** All values not ending with the given string */
+  portfolio_not_ends_with?: InputMaybe<Scalars['String']['input']>;
+  /** All values that are not contained in given list. */
+  portfolio_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** All values not starting with the given string. */
+  portfolio_not_starts_with?: InputMaybe<Scalars['String']['input']>;
+  /** All values starting with the given string. */
+  portfolio_starts_with?: InputMaybe<Scalars['String']['input']>;
   preview?: InputMaybe<AssetWhereInput>;
   publishedAt?: InputMaybe<Scalars['DateTime']['input']>;
   /** All values greater than the given value. */
@@ -1416,12 +1591,28 @@ export type ChallengeWhereInput = {
   /** All values that are not contained in given list. */
   publishedAt_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']['input']>>>;
   publishedBy?: InputMaybe<UserWhereInput>;
+  role?: InputMaybe<Scalars['String']['input']>;
+  /** All values containing the given string. */
+  role_contains?: InputMaybe<Scalars['String']['input']>;
+  /** All values ending with the given string. */
+  role_ends_with?: InputMaybe<Scalars['String']['input']>;
+  /** All values that are contained in given list. */
+  role_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  role_not?: InputMaybe<Scalars['String']['input']>;
+  /** All values not containing the given string. */
+  role_not_contains?: InputMaybe<Scalars['String']['input']>;
+  /** All values not ending with the given string */
+  role_not_ends_with?: InputMaybe<Scalars['String']['input']>;
+  /** All values that are not contained in given list. */
+  role_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** All values not starting with the given string. */
+  role_not_starts_with?: InputMaybe<Scalars['String']['input']>;
+  /** All values starting with the given string. */
+  role_starts_with?: InputMaybe<Scalars['String']['input']>;
   scheduledIn_every?: InputMaybe<ScheduledOperationWhereInput>;
   scheduledIn_none?: InputMaybe<ScheduledOperationWhereInput>;
   scheduledIn_some?: InputMaybe<ScheduledOperationWhereInput>;
-  screens_every?: InputMaybe<AssetWhereInput>;
-  screens_none?: InputMaybe<AssetWhereInput>;
-  screens_some?: InputMaybe<AssetWhereInput>;
   slug?: InputMaybe<Scalars['String']['input']>;
   /** All values containing the given string. */
   slug_contains?: InputMaybe<Scalars['String']['input']>;
@@ -1460,6 +1651,25 @@ export type ChallengeWhereInput = {
   title_not_starts_with?: InputMaybe<Scalars['String']['input']>;
   /** All values starting with the given string. */
   title_starts_with?: InputMaybe<Scalars['String']['input']>;
+  twitter?: InputMaybe<Scalars['String']['input']>;
+  /** All values containing the given string. */
+  twitter_contains?: InputMaybe<Scalars['String']['input']>;
+  /** All values ending with the given string. */
+  twitter_ends_with?: InputMaybe<Scalars['String']['input']>;
+  /** All values that are contained in given list. */
+  twitter_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  twitter_not?: InputMaybe<Scalars['String']['input']>;
+  /** All values not containing the given string. */
+  twitter_not_contains?: InputMaybe<Scalars['String']['input']>;
+  /** All values not ending with the given string */
+  twitter_not_ends_with?: InputMaybe<Scalars['String']['input']>;
+  /** All values that are not contained in given list. */
+  twitter_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** All values not starting with the given string. */
+  twitter_not_starts_with?: InputMaybe<Scalars['String']['input']>;
+  /** All values starting with the given string. */
+  twitter_starts_with?: InputMaybe<Scalars['String']['input']>;
   updatedAt?: InputMaybe<Scalars['DateTime']['input']>;
   /** All values greater than the given value. */
   updatedAt_gt?: InputMaybe<Scalars['DateTime']['input']>;
@@ -3927,8 +4137,8 @@ export type GetChallengeQueryVariables = Exact<{
 }>;
 
 
-export type GetChallengeQuery = { __typename?: 'Query', challenges: Array<{ __typename?: 'Challenge', id: string, slug: string, difficult: Difficult, description: string, area: Area, title: string, figmaUrl?: string | null, bgColor: { __typename?: 'Color', hex: any }, screens: Array<{ __typename?: 'Asset', url: string }>, ideaBody: { __typename?: 'RichText', html: string }, descriptionBody: { __typename?: 'RichText', html: string }, requisitesBody: { __typename?: 'RichText', html: string } }> };
+export type GetChallengeQuery = { __typename?: 'Query', challenges: Array<{ __typename?: 'Challenge', id: string, slug: string, difficult: Difficult, description: string, area: Area, figmaUrl?: string | null, author: string, linkedin?: string | null, portfolio?: string | null, role: string, title: string, twitter?: string | null, avatar?: { __typename?: 'Asset', url: string } | null, bgColor: { __typename?: 'Color', hex: any }, ideaBody: { __typename?: 'RichText', html: string }, preview: { __typename?: 'Asset', url: string }, descriptionBody: { __typename?: 'RichText', html: string }, requisitesBody: { __typename?: 'RichText', html: string } }> };
 
 
 export const GetAllChallengesDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"getAllChallenges"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"challenges"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"slug"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"area"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"difficult"}},{"kind":"Field","name":{"kind":"Name","value":"preview"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"url"}}]}}]}}]}}]} as unknown as DocumentNode<GetAllChallengesQuery, GetAllChallengesQueryVariables>;
-export const GetChallengeDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"getChallenge"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"slug"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"challenges"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"where"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"slug"},"value":{"kind":"Variable","name":{"kind":"Name","value":"slug"}}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"slug"}},{"kind":"Field","name":{"kind":"Name","value":"difficult"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"area"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"figmaUrl"}},{"kind":"Field","name":{"kind":"Name","value":"bgColor"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"hex"}}]}},{"kind":"Field","name":{"kind":"Name","value":"screens"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"url"}}]}},{"kind":"Field","name":{"kind":"Name","value":"ideaBody"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"html"}}]}},{"kind":"Field","name":{"kind":"Name","value":"descriptionBody"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"html"}}]}},{"kind":"Field","name":{"kind":"Name","value":"requisitesBody"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"html"}}]}}]}}]}}]} as unknown as DocumentNode<GetChallengeQuery, GetChallengeQueryVariables>;
+export const GetChallengeDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"getChallenge"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"slug"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"challenges"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"where"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"slug"},"value":{"kind":"Variable","name":{"kind":"Name","value":"slug"}}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"slug"}},{"kind":"Field","name":{"kind":"Name","value":"difficult"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"area"}},{"kind":"Field","name":{"kind":"Name","value":"figmaUrl"}},{"kind":"Field","name":{"kind":"Name","value":"author"}},{"kind":"Field","name":{"kind":"Name","value":"linkedin"}},{"kind":"Field","name":{"kind":"Name","value":"portfolio"}},{"kind":"Field","name":{"kind":"Name","value":"role"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"twitter"}},{"kind":"Field","name":{"kind":"Name","value":"avatar"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"url"}}]}},{"kind":"Field","name":{"kind":"Name","value":"bgColor"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"hex"}}]}},{"kind":"Field","name":{"kind":"Name","value":"ideaBody"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"html"}}]}},{"kind":"Field","name":{"kind":"Name","value":"preview"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"url"}}]}},{"kind":"Field","name":{"kind":"Name","value":"descriptionBody"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"html"}}]}},{"kind":"Field","name":{"kind":"Name","value":"requisitesBody"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"html"}}]}}]}}]}}]} as unknown as DocumentNode<GetChallengeQuery, GetChallengeQueryVariables>;

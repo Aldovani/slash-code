@@ -16,30 +16,38 @@ export const GET_ALL_CHALLENGES = gql`
   }
 `;
 export const GET_CHALLENGE = gql`
- query getChallenge($slug: String) {
-  challenges(where: {slug: $slug}) {
-    id
-    slug
-    difficult
-    description
-    area
-    title
-    figmaUrl
-    bgColor {
-      hex
-    }
-    screens {
-      url
-    }
-    ideaBody {
-      html
-    }
-    descriptionBody {
-      html
-    }
-    requisitesBody {
-      html
+  query getChallenge($slug: String) {
+    challenges(where: { slug: $slug }) {
+      id
+      slug
+      difficult
+      description
+      area
+      figmaUrl
+      author
+      linkedin
+      portfolio
+      role
+      title
+      twitter
+      avatar {
+        url
+      }
+      bgColor {
+        hex
+      }
+      ideaBody {
+        html
+      }
+      preview {
+        url
+      }
+      descriptionBody {
+        html
+      }
+      requisitesBody {
+        html
+      }
     }
   }
-}
 `;
