@@ -1,4 +1,5 @@
-import { CallToAction, Faq } from "@/app/(home)/components";
+import {  Faq } from "@/components/ui/faq";
+import { CallToAction } from "@/components/ui/call-to-action";
 import { GetChallengeQuery } from "@/graphql/generated/graphql";
 import { GET_CHALLENGE } from "@/graphql/queries";
 import { Client } from "@/lib/graphql-request";
