@@ -9,7 +9,7 @@ export function Features() {
         <h2 className="text-2xl md:text-3.5xl leading-[120%] font-medium text-slate-900">
           Potencialize suas habilidades
         </h2>
-        <p className="mt-2 text-slate-400 text-sm leading-[140%] max-w-[630px] text-left">
+        <p className="mt-2 text-slate-500 text-sm leading-[140%] max-w-[630px] text-left">
           Domine novas tecnologias e frameworks com desafios práticos e
           dinâmicos. A cada solução, você se aproxima de se tornar um
           desenvolvedor mais completo e preparado para o mercado. Não importa

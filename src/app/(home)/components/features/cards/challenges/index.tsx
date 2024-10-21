@@ -7,7 +7,7 @@ import { CHALLENGES } from "./challenges.data";
 
 export function Challenges() {
   return (
-    <Card.Root className="col-start-1 lg:col-end-6 sm:col-end-5 col-end-10 ">
+    <Card.Root className="col-start-1 lg:col-end-6   col-end-10 ">
       <Card.Header>
         <Card.Title>Desafios variados</Card.Title>
         <Card.Description className="mt-2">
