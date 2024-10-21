@@ -1,8 +1,8 @@
 import { gql } from "graphql-request";
 
 export const GET_ALL_CHALLENGES = gql`
-  query getAllChallenges {
-    challenges {
+  query getAllChallenges($first:Int) {
+    challenges(first:$first) {
       id
       slug
       title
