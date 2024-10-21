@@ -1,6 +1,5 @@
 import { render, screen } from "@testing-library/react";
 import { QuestionItem } from "./question-item";
-import { QUESTIONS } from "./questions.data";
 import { Accordion } from "@/components/ui/accordion";
 
 describe("<QuestionItem/>", () => {
