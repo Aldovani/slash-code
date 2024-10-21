@@ -33,7 +33,7 @@ export function ChallengeHeader({
   author,
 }: ChallengeHeaderProps) {
   return (
-    <header className="mt-6 flex justify-between items-center">
+    <header className="mt-6 flex max-md:flex-col max-md:gap-8   justify-between md:items-center">
       <div>
         <div>
           <div className="flex gap-2 items-center">
@@ -43,7 +43,7 @@ export function ChallengeHeader({
           <h1 className="text-5xl text-slate-600 mt-3 font-semibold ">
             {title}
           </h1>
-          <p className="break-words text-slate-400 max-w-[650px] mt-2 line-clamp-2 ">
+          <p className="break-words text-slate-500 max-w-[650px] mt-2 line-clamp-2 ">
             {description}
           </p>
         </div>
@@ -60,7 +60,7 @@ export function ChallengeHeader({
       </div>
 
       <div>
-        <span className="text-slate-400 ">Desenvolvido por:</span>
+        <span className="text-slate-500 ">Desenvolvido por:</span>
         <div className="flex  items-start mt-2 gap-3">
           <Image
             alt="Aldovani"
@@ -71,27 +71,27 @@ export function ChallengeHeader({
           />
 
           <div>
-            <h3 className="font-semibold text-slate-600">Aldovani</h3>
-            <span className=" text-slate-400">Desenvolvedor</span>
+            <h3 className="font-semibold text-slate-600">{author.name}</h3>
+            <span className=" text-slate-500">{author.role}</span>
 
             <nav className="mt-2">
               <ul className="flex gap-3">
                 {author.social.portfolio && (
-                  <li className="text-slate-400 hover:text-violet-600">
+                  <li className="text-slate-500 hover:text-violet-600">
                     <a href={author.social.portfolio} target="_blank">
                       <Smile />
                     </a>
                   </li>
                 )}
                 {author.social.linkedin && (
-                  <li className="text-slate-400 hover:text-violet-600">
+                  <li className="text-slate-500 hover:text-violet-600">
                     <a href={author.social.linkedin} target="_blank">
                       <Linkedin />
                     </a>
                   </li>
                 )}
                 {author.social.twitter && (
-                  <li className="text-slate-400 hover:text-violet-600">
+                  <li className="text-slate-500 hover:text-violet-600">
                     <a href={author.social.twitter} target="_blank">
                       <Twitter />
                     </a>
