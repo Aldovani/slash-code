@@ -1,27 +1,30 @@
-"use client";
-
 import { Link } from "@/components/ui/link";
 import { Browser } from "../browser";
 import { WebSite } from "../browser/components/web-site";
 import { Trophy } from "lucide-react";
 import { BorderBeam } from "@/components/magicui/border-beam";
+import { challenges } from "@/types/challenges";
 
-export function Hero() {
+type HeroProps = {
+  initialData: challenges[];
+};
+
+export function Hero({ initialData }: HeroProps) {
   return (
     <main className=" relative flex flex-col items-center gap-12 sm:px-8 px-4">
       <div className="flex flex-col items-center mt-20">
         <div className="flex gap-2 items-center  w-fit py-2 px-4  bg-violet-50 rounded-lg text-violet-600">
           <Trophy />
-          <span className="font-medium text-xs sm:text-base ">
+          <span className="font-medium text-sm sm:text-base ">
             Novos desafios todas as semanas
           </span>
         </div>
-        <h1 className=" max-w-[260px] md:max-w-[730px] sm:max-w-[420px] text-center mt-2  text-slate-700  font-medium md:text-[4rem] sm:text-4xl text-3xl  !leading-[115%]">
+        <h1 className=" max-w-[260px] md:max-w-[730px] sm:max-w-[420px] text-center mt-2  text-slate-700  font-medium md:text-[4rem] text-4xl  !leading-[115%]">
           Encare Desafios e<span className="text-violet-600"> Supere </span>
           seus
           <span className="text-violet-600"> Limites</span>!
         </h1>
-        <p className="max-w-[710px] text-center text-slate-400 mt-4 md:text-base  text-sm">
+        <p className="max-w-[710px] text-center text-slate-500 mt-4 md:text-base  text-xs sm:text-sm">
           Desafios de programação criados para elevar suas habilidades. Seja no
           front-end, back-end ou mobile, nós temos o próximo desafio que vai te
           preparar para o futuro.
@@ -45,8 +48,11 @@ export function Hero() {
             colorTo="#ddd6fe"
           />
 
-          <Browser className="">
-            <WebSite className="grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-items-center" />
+          <Browser>
+            <WebSite
+              initialData={initialData}
+              className="grid-cols-1 lg:grid-cols-2 xl:grid-cols-3  justify-items-center"
+            />
           </Browser>
         </div>
       </div>
