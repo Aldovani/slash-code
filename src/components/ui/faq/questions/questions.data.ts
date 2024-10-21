@@ -30,7 +30,7 @@ export const QUESTIONS = [
       "Sim! Você pode adaptar os desafios à sua abordagem e experimentar diferentes soluções. Nossa plataforma é flexível, permitindo que você explore sua criatividade e personalize o processo de resolução da maneira que preferir.",
   },
   {
-    question: "Posso modificar os desafios?",
+    question: "Posso utilizar os projetos como portfólio?",
     answer:
       "Com certeza! Todos os desafios que você concluir podem ser adicionados ao seu portfólio. Eles são uma excelente maneira de mostrar suas habilidades e demonstrar sua capacidade de resolver problemas reais, além de destacar sua evolução como desenvolvedor.",
   },
