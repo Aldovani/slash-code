@@ -1,22 +1,45 @@
+"use client";
+
+import { motion } from "framer-motion";
 import { Card } from "../../../card";
 
 export function LevelOfDifficulty() {
   return (
-    <Card.Root className="lg:col-start-1 lg:col-end-5 sm:col-start-5 col-end-10 col-start-1  ">
+    <Card.Root className="lg:col-start-1 lg:col-end-5 sm:col-start-1 col-end-10 col-start-1  ">
       <Card.Content className="flex items-center justify-center py-10 ">
-        <ul className="flex flex-col items-center px-10">
-          <li className="rounded-t-lg border-b-transparent text-center font-medium w-[calc(260px_-_90px)] py-3 text-violet-600 border border-slate-200 bg-white">
+        <ul className="flex flex-col items-center md:px-10 px-5 w-full">
+          <motion.li
+            initial={{ translateY: 10, opacity: 0 }}
+            transition={{  }}
+            whileInView={{ translateY: 0, opacity: 1 }}
+            className="hover:text-violet-50 hover:bg-violet-600 hover:border-violet-600 transition-all  rounded-t-lg border-b-transparent text-center font-medium  w-[calc(100%_-_30%)] py-3 text-violet-600 border border-slate-200 bg-white"
+          >
             Especialista
-          </li>
-          <li className="rounded-t-lg border-b-transparent text-center font-medium w-[calc(260px_-_60px)] py-3 text-violet-600 border border-slate-200 bg-white">
+          </motion.li>
+          <motion.li
+            initial={{ translateY: 10, opacity: 0 }}
+            transition={{ delay: 0.2 }}
+            whileInView={{ translateY: 0, opacity: 1 }}
+            className="hover:text-violet-50 hover:bg-violet-400 hover:border-violet-400 transition-all  rounded-t-lg border-b-transparent text-center font-medium  w-[calc(100%_-_20%)] py-3 text-violet-600 border border-slate-200 bg-white"
+          >
             Avançado
-          </li>
-          <li className="rounded-t-lg border-b-transparent text-center font-medium w-[calc(260px_-_30px)] py-3 text-violet-600 border border-slate-200 bg-white">
+          </motion.li>
+          <motion.li
+            initial={{ translateY: 10, opacity: 0 }}
+            transition={{ delay: 0.4 }}
+            whileInView={{ translateY: 0, opacity: 1 }}
+            className=" hover:bg-violet-200 hover:border-violet-200 transition-all  rounded-t-lg border-b-transparent text-center font-medium  w-[calc(100%_-_10%)] py-3 text-violet-600 border border-slate-200 bg-white"
+          >
             Intermediário
-          </li>
-          <li className="rounded-lg text-center font-medium w-[260px] py-3 text-violet-600 border border-slate-200 bg-white">
+          </motion.li>
+          <motion.li
+            initial={{ translateY: 10, opacity: 0 }}
+            transition={{ delay: 0.6 }}
+            whileInView={{ translateY: 0, opacity: 1 }}
+            className=" hover:bg-violet-50 hover:border-violet-50 transition-all  rounded-lg text-center font-medium  w-[100%] py-3 text-violet-600 border border-slate-200 bg-white"
+          >
             Iniciante
-          </li>
+          </motion.li>
         </ul>
       </Card.Content>
 
