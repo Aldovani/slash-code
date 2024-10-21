@@ -15,7 +15,7 @@ export function ActiveLearningSection() {
   return (
     <section className="bg-slate-50 py-16 mt-24">
       <div className="container mx-auto">
-        <div className="flex justify-between items-center  flex-wrap gap-6">
+        <div className="flex justify-between items-center  lg:flex-row flex-col gap-6">
           <header className="flex flex-col">
             <span className="text-violet-400 text-[0.875rem]">
               Feito para voce
@@ -23,7 +23,7 @@ export function ActiveLearningSection() {
             <h2 className="text-3.5xl leading-[120%] font-medium text-slate-900">
               Fuja de tutorias
             </h2>
-            <p className="mt-2 text-slate-400 text-base leading-[140%] max-w-[480px] text-left">
+            <p className="mt-2 text-slate-500 text-base leading-[140%] max-w-[480px] text-left">
               Aprenda de verdade, resolvendo desafios reais de programação.
               Chega de seguir passo a passo, é hora de aplicar seus
               conhecimentos e desenvolver suas habilidades na prática.
@@ -46,7 +46,7 @@ export function ActiveLearningSection() {
           </Card.Root>
         </div>
 
-        <div className="flex max-md:flex-wrap justify-between gap-8 mt-10 ">
+        <div className="flex max-lg:flex-wrap justify-between gap-8 mt-10 ">
           <RenderList
             data={ACTIVE_LEARNING}
             renderItem={(data) => <ActiveLearningItem data={data} />}
