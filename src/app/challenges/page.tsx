@@ -1,15 +1,17 @@
 import { RenderList } from "@/components/render-list";
 import { ChallengeItem } from "@/components/ui/challenge-item/";
-import { Client } from "@/lib/graphql-request";
-import { GetAllChallengesQuery } from "@/graphql/generated/graphql";
-import { GET_ALL_CHALLENGES } from "@/graphql/queries";
+import { Metadata } from "next";
+import { getChallenges } from "@/services/challenegs";
 
 export const revalidate = 604800;
 
+export const metadata: Metadata = {
+  title: "Desafios - SlashCode",
+  description: "...",
+};
+
 export default async function ChallengesPage() {
-  const { challenges } = await Client.request<GetAllChallengesQuery>(
-    GET_ALL_CHALLENGES
-  );
+  const challenges = await getChallenges();
 
   return (
     <main className="container min-h-[calc(100svh_-_82px_-96px_-36px)]">
