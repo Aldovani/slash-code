@@ -1,35 +1,19 @@
 "use client";
 
-import dynamic from "next/dynamic";
-import { WebSite } from "../browser/components/web-site";
 import { Steps } from "./steps";
-import { useState } from "react";
-import { StepIllustration } from "./step-ilustrations";
+import { StepIllustration } from "./step-illustrations";
+import { useHowItWorksModel } from "./how-it-works.module";
+import { VisualStudioCode } from "../browser/components/visual-studio-code";
+import { WebSite } from "../browser/components/web-site";
+import { challenges } from "@/types/challenges";
+import { LinkedinPage } from "../browser/components/linkedin";
 
-const VisualStudioCode = dynamic(
-  () => import("../browser/components/visual-studio-code")
-);
+type HowItWorksProps = {
+  initialData: challenges[];
+};
 
-export function HowItWorks() {
-  const [steps, setSteps] = useState([0]);
-
-  const currentStep = steps[steps.length - 1];
-
-  function handleChangeStep(step: number) {
-    setSteps((prev) => {
-      if (prev.includes(step)) {
-        const stepIndex = prev.findIndex((item) => item === step);
-        const newStep = prev.slice(0, stepIndex + 1);
-        return newStep;
-      }
-
-      return [...prev, step];
-    });
-  }
-
-  function handleCloseStep(step: number) {
-    setSteps((prev) => prev.filter((item) => item !== step));
-  }
+export function HowItWorks({ initialData }: HowItWorksProps) {
+  const { steps, handleChangeStep, handleCloseStep } = useHowItWorksModel();
 
   return (
     <section className="container py-16 mt-20 mx-auto">
@@ -44,32 +28,32 @@ export function HowItWorks() {
       <div className=" grid lg:grid-cols-[380px_1fr] grid-cols-1 gap-8 mt-12">
         <Steps currentStep={steps} onChangeStep={handleChangeStep} />
 
-        <div className="bg-slate-50 relative pl-2 sm:pl-11 md:pl-20 pt-24 overflow-hidden rounded-tl-xl">
+        <div className="hidden pl-20 lg:block bg-slate-50 relative  pt-24 overflow-hidden rounded-tl-xl">
           <StepIllustration
             onClose={() => handleCloseStep(0)}
-            isShow={steps.includes(0)}
-            stepIndex={steps.findIndex((item) => item === 0)}
-            currentIndex={currentStep}
-            >
-            <WebSite className="lg:grid-cols-2 grid-cols-1 " />
+            isOpen={steps.includes(0)}
+            stepCurrentIndex={steps.findIndex((item) => item === 0)}
+          >
+            <WebSite
+              initialData={initialData}
+              className="lg:col-end-2 xl:grid-cols-2 grid-cols-1 "
+            />
           </StepIllustration>
 
           <StepIllustration
             onClose={() => handleCloseStep(1)}
-            currentIndex={currentStep}
-            isShow={steps.includes(1)}
-            stepIndex={steps.findIndex((item) => item === 1)}
-            >
+            isOpen={steps.includes(1)}
+            stepCurrentIndex={steps.findIndex((item) => item === 1)}
+          >
             <VisualStudioCode />
           </StepIllustration>
 
           <StepIllustration
             onClose={() => handleCloseStep(2)}
-            isShow={steps.includes(2)}
-            stepIndex={steps.findIndex((item) => item === 2)}
-            currentIndex={currentStep}
+            isOpen={steps.includes(2)}
+            stepCurrentIndex={steps.findIndex((item) => item === 2)}
           >
-            <>aqui vem a pagina do linkedin</>
+            <LinkedinPage />
           </StepIllustration>
         </div>
       </div>
