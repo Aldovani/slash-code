@@ -1,12 +1,11 @@
 import { Faq } from "@/components/ui/faq";
 import { CallToAction } from "@/components/ui/call-to-action";
-import { GetChallengeQuery } from "@/graphql/generated/graphql";
-import { GET_CHALLENGE } from "@/graphql/queries";
-import { Client } from "@/lib/graphql-request";
 import { notFound } from "next/navigation";
 import { Banner } from "./components/banner";
 import { ChallengeBody as Body } from "./components/body";
 import { ChallengeHeader as Header } from "./components/header";
+import { Metadata, ResolvingMetadata } from "next";
+import { getChallengeBySlug, getSlugList } from "@/services/challenegs";
 
 type ChallengesDetailsPageProps = {
   params: { slug: string };
@@ -14,15 +13,27 @@ type ChallengesDetailsPageProps = {
 
 export const revalidate = 2592000;
 
+export async function generateStaticParams() {
+  const slugs = await getSlugList();
+  return slugs;
+}
+
+export async function generateMetadata(
+  { params }: ChallengesDetailsPageProps,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  const challenge = await getChallengeBySlug(params.slug);
+  return {
+    title: `${challenge?.title} - SlashCode`,
+    description: challenge?.description,
+    openGraph: { images: challenge?.preview },
+  };
+}
+
 export default async function ChallengesDetailsPage({
   params,
 }: ChallengesDetailsPageProps) {
-  const { challenges } = await Client.request<GetChallengeQuery>(
-    GET_CHALLENGE,
-    { slug: params.slug }
-  );
-
-  const challenge = challenges.at(0);
+  const challenge = await getChallengeBySlug(params.slug);
 
   if (!challenge) notFound();
 

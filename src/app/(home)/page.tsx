@@ -8,16 +8,16 @@ import {
 
 import { CallToAction } from "@/components/ui/call-to-action";
 import { Faq } from "@/components/ui/faq";
-import { GetAllChallengesQuery } from "@/graphql/generated/graphql";
-import { GET_ALL_CHALLENGES } from "@/graphql/queries";
-import { Client } from "@/lib/graphql-request";
+import type { Metadata } from "next";
+import { HomePageMetaTag } from "./home.meta";
+import { getChallenges } from "@/services/challenegs";
 
 export const revalidate = 604800;
 
+export const metadata: Metadata = HomePageMetaTag;
+
 export default async function HomePage() {
-  const { challenges } = await Client.request<GetAllChallengesQuery>(
-    GET_ALL_CHALLENGES
-  );
+  const challenges = await getChallenges({ perPage: 6 });
 
   return (
     <>
