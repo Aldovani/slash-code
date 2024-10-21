@@ -9,7 +9,6 @@ import { HamburgerButton } from "@/components/ui/header/components/hamburger-but
 
 import Logo from "@/assets/Logo.svg";
 
-
 export function WebSiteHeader() {
   const [isNavigationOpen, setIsNavigationOpen] = useState(false);
 
@@ -23,7 +22,7 @@ export function WebSiteHeader() {
       <nav className="md:flex gap-6 items-center hidden ">
         <NextLink
           href="/"
-          className="hover:text-violet-600 text-sm text-slate-400 font-medium"
+          className="hover:text-violet-600 text-sm text-slate-500 font-medium"
         >
           Inicio
         </NextLink>
@@ -36,12 +35,17 @@ export function WebSiteHeader() {
 
         <NextLink
           href="/blog"
-          className="hover:text-violet-600 text-sm text-slate-400 font-medium"
+          className="pointer-events-none text-sm text-slate-300 font-medium"
         >
           Blog
         </NextLink>
       </nav>
-      <Link href="/challenges" variants="outline" size="sm" className="hidden md:block">
+      <Link
+        href="/challenges"
+        variants="outline"
+        size="sm"
+        className="hidden md:block"
+      >
         Começar agora
       </Link>
 

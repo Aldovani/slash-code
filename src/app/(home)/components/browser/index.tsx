@@ -13,7 +13,7 @@ const browser = tv({
 export function Browser({ children, className,onClose }: BrowserProps) {
   return (
     <div className={browser({ className })}>
-      <div className="flex py-3.5 gap-2 px-5 border-b border-slate-100">
+      <div className="flex py-3.5 gap-2 px-5 border-b sticky top-0 left-0 bg-white z-30 border-slate-100">
         <div
           onClick={onClose}
           className="hover:scale-110 transition-transform cursor-pointer size-[10px] rounded-full bg-[#ED4B47] "></div>

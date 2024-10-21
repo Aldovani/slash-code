@@ -4,7 +4,7 @@ import { Client } from "@/lib/graphql-request";
 import { GetAllChallengesQuery } from "@/graphql/generated/graphql";
 import { GET_ALL_CHALLENGES } from "@/graphql/queries";
 
-export const revalidate = 0;
+export const revalidate = 604800;
 
 export default async function ChallengesPage() {
   const { challenges } = await Client.request<GetAllChallengesQuery>(
@@ -14,7 +14,7 @@ export default async function ChallengesPage() {
   return (
     <main className="container min-h-[calc(100svh_-_82px_-96px_-36px)]">
       <h1 className="text-3.5xl font-medium mt-9 text-slate-600">Desafios</h1>
-      <p className="text-slate-400">
+      <p className="text-slate-500">
         Desafie suas habilidades e amplie seu conhecimento. Comece agora!
       </p>
 

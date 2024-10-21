@@ -30,7 +30,7 @@ export function ChallengeItem({ data }: ChallengeItemProps) {
           </Badge>
         </div>
       </div>
-      <p className="max-w-[336px] text-sm  text-slate-400 	mt-4">
+      <p className="max-w-[336px] text-sm  text-slate-500 	mt-4">
         {data.description}
       </p>
     </Link>
