@@ -1,7 +1,7 @@
 import { ComponentProps, ReactNode } from "react";
 import { tv } from "tailwind-variants";
 
-const description = tv({ base: "text-slate-500 text-[0.875rem] mt-2" });
+const description = tv({ base: "text-slate-400 text-[0.875rem] mt-2" });
 
 type CardDescriptionProps = {
   children: ReactNode;

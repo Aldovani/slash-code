@@ -1,7 +1,7 @@
 import { ComponentProps, ReactNode } from "react";
 import { tv } from "tailwind-variants";
 
-const title = tv({ base: "text-xl font-medium text-slate-500" });
+const title = tv({ base: "sm:text-xl text-lg font-medium text-slate-500" });
 
 type CardTitleProps = {
   children: ReactNode;

@@ -118,6 +118,10 @@ const config = {
         "ranking-card":
           "`\\n            0px 11px 24px 0px rgba(55, 65, 81, 0.05) ,\\n           \\n        `",
       },
+
+      screens: {
+        xs: '420px',
+      },
     },
   },
   plugins: [

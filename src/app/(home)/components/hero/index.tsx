@@ -16,15 +16,15 @@ export function Hero({ initialData }: HeroProps) {
         <div className="flex gap-2 items-center  w-fit py-2 px-4  bg-violet-50 rounded-lg text-violet-600">
           <Trophy />
           <span className="font-medium text-sm sm:text-base ">
-            Novos desafios todas as semanas
+            Embarquem em novos desafios 
           </span>
         </div>
-        <h1 className=" max-w-[260px] md:max-w-[730px] sm:max-w-[420px] text-center mt-2  text-slate-700  font-medium md:text-[4rem] text-4xl  !leading-[115%]">
+        <h1 className=" max-w-[420px] md:max-w-[730px] sm:max-w-[420px] text-center mt-2  text-slate-700  font-medium md:text-[4rem] text-3xl  !leading-[115%]">
           Encare Desafios e<span className="text-violet-600"> Supere </span>
           seus
           <span className="text-violet-600"> Limites</span>!
         </h1>
-        <p className="max-w-[710px] text-center text-slate-500 mt-4 md:text-base  text-xs sm:text-sm">
+        <p className="max-w-[710px] text-center text-slate-400 mt-4 md:text-base sm:text-sm text-xs">
           Desafios de programação criados para elevar suas habilidades. Seja no
           front-end, back-end ou mobile, nós temos o próximo desafio que vai te
           preparar para o futuro.

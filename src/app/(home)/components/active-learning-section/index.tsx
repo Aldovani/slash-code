@@ -15,18 +15,17 @@ export function ActiveLearningSection() {
   return (
     <section className="bg-slate-50 py-16 mt-24">
       <div className="container mx-auto">
-        <div className="flex justify-between items-center  lg:flex-row flex-col gap-6">
+        <div className="flex justify-between lg:items-center  lg:flex-row flex-col gap-6">
           <header className="flex flex-col">
-            <span className="text-violet-400 text-[0.875rem]">
+            <span className="text-violet-600 text-[0.875rem]">
               Feito para voce
             </span>
-            <h2 className="text-3.5xl leading-[120%] font-medium text-slate-900">
+            <h2 className="text-2xl xs:text-3.5xl leading-[120%] font-medium text-slate-900">
               Fuja de tutorias
             </h2>
-            <p className="mt-2 text-slate-500 text-base leading-[140%] max-w-[480px] text-left">
-              Aprenda de verdade, resolvendo desafios reais de programação.
-              Chega de seguir passo a passo, é hora de aplicar seus
-              conhecimentos e desenvolver suas habilidades na prática.
+            <p className="mt-2 text-slate-400 xs:text-base text-xs leading-[140%] max-w-[420px] text-left">
+              Aprenda de verdade com desafios reais de programação. Aplique seus
+              conhecimentos e desenvolva suas habilidades na prática.
             </p>
             <Link
               size="normal"

@@ -22,15 +22,15 @@ export function ChallengeItem({ data }: ChallengeItemProps) {
       <div className=" flex justify-between flex-wrap mt-5">
         <h4 className="text-xl font-medium text-slate-600">{data.title}</h4>
         <div className="flex justify-between gap-2">
-          <Badge className="flex items-center  text-xs    px-2 py-1 ">
+          <Badge className="flex items-center text-xs px-2 py-1 ">
             {RewriteArea(data.area)}
           </Badge>
-          <Badge className="flex items-center  text-xs    px-2 py-1 ">
+          <Badge className="flex items-center text-xs px-2 py-1 ">
             {data.difficult}
           </Badge>
         </div>
       </div>
-      <p className="max-w-[336px] text-sm  text-slate-500 	mt-4">
+      <p className="max-w-[336px] sm:text-sm text-xs  text-slate-400 	mt-4">
         {data.description}
       </p>
     </Link>

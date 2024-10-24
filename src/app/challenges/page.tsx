@@ -15,8 +15,8 @@ export default async function ChallengesPage() {
 
   return (
     <main className="container min-h-[calc(100svh_-_82px_-96px_-36px)]">
-      <h1 className="text-3.5xl font-medium mt-9 text-slate-600">Desafios</h1>
-      <p className="text-slate-500">
+      <h1 className="sm:text-3.5xl text-2xl font-medium mt-9 text-slate-600">Desafios</h1>
+      <p className="text-slate-400 sm:text-base text-sm">
         Desafie suas habilidades e amplie seu conhecimento. Comece agora!
       </p>
 

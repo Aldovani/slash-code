@@ -16,16 +16,16 @@ export function HowItWorks({ initialData }: HowItWorksProps) {
   const { steps, handleChangeStep, handleCloseStep } = useHowItWorksModel();
 
   return (
-    <section className="container py-16 mt-20 mx-auto">
+    <section className="container py-16  mx-auto">
       <header>
-        <span className="text-violet-400 text-[0.875rem]">
+        <span className="text-violet-600 text-[0.875rem]">
           Por Dentro do Slash
         </span>
-        <h2 className="text-3.5xl leading-[120%] font-medium text-slate-900 max-w-[470px]">
+        <h2 className="text-2xl xs:text-3.5xl leading-[120%] font-medium text-slate-900 max-w-[470px]">
           Descubra como nossa plataforma funciona{" "}
         </h2>
       </header>
-      <div className=" grid lg:grid-cols-[380px_1fr] grid-cols-1 gap-8 mt-12">
+      <div className=" grid lg:grid-cols-[380px_1fr] grid-cols-1 gap-8 sm:mt-12 mt-10">
         <Steps currentStep={steps} onChangeStep={handleChangeStep} />
 
         <div className="hidden pl-20 lg:block bg-slate-50 relative  pt-24 overflow-hidden rounded-tl-xl">
@@ -36,7 +36,7 @@ export function HowItWorks({ initialData }: HowItWorksProps) {
           >
             <WebSite
               initialData={initialData}
-              className="lg:col-end-2 xl:grid-cols-2 grid-cols-1 "
+              className="md:grid-cols-2 grid-cols-1 "
             />
           </StepIllustration>
 

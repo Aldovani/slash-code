@@ -9,9 +9,9 @@ export function Post({ post }: PostProps) {
   return (
     <article className=" border border-slate-200 rounded-lg bg-white  px-5 py-3 flex flex-col ">
       <header className="flex items-center gap-4">
-        <div className="size-10 bg-slate-200 rounded-full" />
-        <div className="flex flex-col">
-          <div className="flex gap-1 items-center">
+        <div className="size-10 max-w-10 flex-1 bg-slate-200 rounded-full" />
+        <div className="flex flex-1 flex-col">
+          <div className="flex  gap-1 items-center">
             <h4 className="text-sm text-slate-600 font-semibold">
               {post.userName}
             </h4>
@@ -32,7 +32,7 @@ export function Post({ post }: PostProps) {
             alt="challenge preview"
             className="rounded-t-lg [clip-path:_circle(80.0%_at_50%_0%)] object-cover bg-slate-50 h-[80%] w-full"
           />
-          <span className="font-semibold text-slate-400 mt-2">
+          <span className="font-medium text-slate-400 mt-2">
             Novo projeto
           </span>
         </div>

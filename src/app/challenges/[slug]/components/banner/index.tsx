@@ -9,7 +9,7 @@ type BannerProps = {
 
 export function Banner({ backgroundColor, title, preview }: BannerProps) {
   return (
-    <div style={{ background: backgroundColor }} className="">
+    <div style={{ background: backgroundColor }}>
       <div className="container md:pt-16 pt-8 relative flex  w-full overflow-hidden justify-center items-center   ">
         <Browser className=" !max-h-[240px] sm:!max-h-[320px] lg:!max-h-[480px] md:max-w-[80%] w-full aspect-video">
           <div className="relative w-full h-full">

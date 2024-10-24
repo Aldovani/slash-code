@@ -16,7 +16,7 @@ export function WebSite({ className, initialData }: WebSiteProps) {
       <Header />
       <main className="px-8 pt-5">
         <h3 className="text-2xl text-slate-700 font-medium">Desafios</h3>
-        <p className="text-slate-500 text-sm">
+        <p className="text-slate-400 text-sm">
           Desafie suas habilidades e amplie seu conhecimento. Comece agora!
         </p>
 
