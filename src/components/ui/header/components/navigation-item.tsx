@@ -24,7 +24,7 @@ export function NavigationItem({
         data-active={isActive}
         data-disabled={isDisabled}
         className={cn(
-          "font-medium  text-slate-500 hover:text-violet-500 data-[active=true]:text-violet-500 data-[disabled=true]:text-slate-300 data-[disabled=true]:cursor-default data-[disabled=true]:pointer-events-none ",
+          "font-medium  text-slate-400 hover:text-violet-600 data-[active=true]:text-violet-600 data-[disabled=true]:text-slate-300 data-[disabled=true]:cursor-default data-[disabled=true]:pointer-events-none ",
           props.className
         )}
       >

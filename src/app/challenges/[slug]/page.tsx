@@ -1,11 +1,14 @@
+import { Metadata, ResolvingMetadata } from "next";
+import { notFound } from "next/navigation";
+
+import { getChallengeBySlug, getSlugList } from "@/services/challenegs";
+
 import { Faq } from "@/components/ui/faq";
 import { CallToAction } from "@/components/ui/call-to-action";
-import { notFound } from "next/navigation";
-import { Banner } from "./components/banner";
-import { ChallengeBody as Body } from "./components/body";
+
 import { ChallengeHeader as Header } from "./components/header";
-import { Metadata, ResolvingMetadata } from "next";
-import { getChallengeBySlug, getSlugList } from "@/services/challenegs";
+import { ChallengeBody as Body } from "./components/body";
+import { Banner } from "./components/banner";
 
 type ChallengesDetailsPageProps = {
   params: { slug: string };
@@ -18,10 +21,9 @@ export async function generateStaticParams() {
   return slugs;
 }
 
-export async function generateMetadata(
-  { params }: ChallengesDetailsPageProps,
-  parent: ResolvingMetadata
-): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: ChallengesDetailsPageProps): Promise<Metadata> {
   const challenge = await getChallengeBySlug(params.slug);
   return {
     title: `${challenge?.title} - SlashCode`,
@@ -37,6 +39,24 @@ export default async function ChallengesDetailsPage({
 
   if (!challenge) notFound();
 
+  const challengeContentHeader = {
+    area: challenge.area,
+    difficult: challenge.difficult,
+    description: challenge.description,
+    title: challenge.title,
+    figmaUrl: challenge.figmaUrl,
+    author: {
+      name: challenge.author,
+      role: challenge.role,
+      avatar: challenge.avatar?.url,
+      social: {
+        linkedin: challenge.linkedin,
+        portfolio: challenge.portfolio,
+        twitter: challenge.twitter,
+      },
+    },
+  };
+
   return (
     <main>
       <Banner
@@ -45,24 +65,8 @@ export default async function ChallengesDetailsPage({
         title={challenge.title}
       />
 
-      <div className="container py-12">
-        <Header
-          difficult={challenge.difficult}
-          title={challenge.title}
-          area={challenge.area}
-          figmaUrl={challenge.figmaUrl}
-          description={challenge.description}
-          author={{
-            name: challenge.author,
-            role: challenge.role,
-            avatar: challenge.avatar?.url,
-            social: {
-              linkedin: challenge.linkedin,
-              portfolio: challenge.portfolio,
-              twitter: challenge.twitter,
-            },
-          }}
-        />
+      <div className="container sm:py-12 py-8">
+        <Header data={challengeContentHeader}></Header>
 
         <Body
           descriptionBody={challenge.descriptionBody.html}

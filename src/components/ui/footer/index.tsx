@@ -10,7 +10,7 @@ export function Footer() {
           <Image src={Logo} alt="SlashCode Logo" />
         </Link>
 
-        <p className="text-slate-500">
+        <p className="text-slate-500 text-center">
           © 2024 Slashcode. Todos os direitos reservados.
         </p>
 

@@ -27,7 +27,7 @@ export const POSTS: Post[] = [
     text: ` 🎯 Concluído mais um desafio na Slashcode! 🚀
     Hoje finalizei mais um desafio de programação na Slashcode, e a sensação de evolução é sempre gratificante. 💡
     Foi uma oportunidade incrível para colocar em prática habilidades em front, além de aprender novas abordagens e resolver problemas complexos. Cada desafio concluído é mais um passo rumo ao aprimoramento contínuo na minha jornada como desenvolvedor.`,
-    pronouns: "Ele/Dele",
+    pronouns: "Ela/Dela",
     userName: "Juliana",
   },
   {

@@ -17,10 +17,10 @@ export function QuestionItem({ answer, index, question }: QuestionItem) {
       data-testid="question"
       className="border rounded-xl py-2 px-6 border-slate-200"
     >
-      <AccordionTrigger className="font-medium text-slate-600">
+      <AccordionTrigger className="font-medium text-left text-slate-600">
         {question}
       </AccordionTrigger>
-      <AccordionContent className="border-none text-slate-500">
+      <AccordionContent className="border-none text-left text-slate-500">
         {answer}
       </AccordionContent>
     </AccordionItem>

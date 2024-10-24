@@ -27,7 +27,7 @@ export function StepItem({
       <h3 className="font-medium sm:text-xl text-lg mt-4 group-data-[is-active=true]:text-violet-900 text-slate-800">
         {title}
       </h3>
-      <p className="group-data-[is-active=true]:text-violet-600 text-slate-400 mt-2 sm:text-base text-xs  ">
+      <p className="group-data-[is-active=true]:text-violet-600 text-slate-400 mt-2 text-base   ">
         {description}
       </p>
     </li>
